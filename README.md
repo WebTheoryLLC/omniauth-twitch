@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/omniauth-twitch.svg)](http://badge.fury.io/rb/omniauth-twitch)
+
 # OmniAuth::Twitch
 
 A OmniAuth strategy for Twitch
