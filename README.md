@@ -1,6 +1,6 @@
-# Omniauth::Twitch
+# OmniAuth::Twitch
 
-TODO: Write a gem description
+A OmniAuth strategy for Twitch
 
 ## Installation
 
