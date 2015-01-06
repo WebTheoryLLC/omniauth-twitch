@@ -24,12 +24,12 @@ module OmniAuth
 
       info do
         {
-          display_name: raw_info['display_name'],
-          name: raw_info['name'],
+          name: raw_info['display_name'],
           email: raw_info['email'],
-          bio: raw_info['bio'],
-          logo: raw_info['logo'],
-          type: raw_info['type']
+          nickname: raw_info['name'],
+          description: raw_info['bio'],
+          image: raw_info['logo'],
+          urls: { Twitch: "http://www.twitch.tv/#{raw_info['name']}" }
         }
       end
 
