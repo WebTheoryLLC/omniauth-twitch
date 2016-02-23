@@ -58,7 +58,7 @@ module OmniAuth
           options[:authorize_options].each do |k|
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
           end
-          unless !options[:redirect_uri].nil?
+          if !options[:redirect_uri].nil?
             params[:redirect_uri] = options[:redirect_uri]
           end
           params[:scope] = params[:scope] || DEFAULT_SCOPE
