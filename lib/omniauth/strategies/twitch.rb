@@ -53,6 +53,10 @@ module OmniAuth
         options.access_token_options.inject({}) { |h,(k,v)| h[k.to_sym] = v; h }
       end
 
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       def authorize_params
         super.tap do |params|
           options[:authorize_options].each do |k|
