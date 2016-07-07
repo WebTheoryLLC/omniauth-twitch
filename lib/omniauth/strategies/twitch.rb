@@ -54,6 +54,7 @@ module OmniAuth
       end
 
       def callback_url
+        return options[:redirect_uri] unless options[:redirect_uri].nil?
         full_host + script_name + callback_path
       end
 
@@ -61,9 +62,6 @@ module OmniAuth
         super.tap do |params|
           options[:authorize_options].each do |k|
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
-          end
-          if !options[:redirect_uri].nil?
-            params[:redirect_uri] = options[:redirect_uri]
           end
           params[:scope] = params[:scope] || DEFAULT_SCOPE
         end
