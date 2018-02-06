@@ -1,5 +1,3 @@
-[![Gem Version](https://badge.fury.io/rb/omniauth-twitch.svg)](http://badge.fury.io/rb/omniauth-twitch)
-
 # OmniAuth::Twitch
 
 A OmniAuth strategy for Twitch
@@ -8,7 +6,7 @@ A OmniAuth strategy for Twitch
 
 Add this line to your application's Gemfile:
 
-    gem 'omniauth-twitch'
+    gem 'omniauth-twitch', github: 'paladinsoftware/omniauth-twitch-helix'
 
 And then execute:
 
@@ -24,7 +22,7 @@ Here's an example for adding the middleware to a Rails app in `config/initialize
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"]
+  provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"], scope: 'user:read:email'
 end
 ```
 
@@ -34,32 +32,40 @@ Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
 
 ```ruby
 {
-  provider: 'twitch',
-  uid: 12345678,
-  info: {
-    name: 'JohnDoe',
-    email: 'johndoe@gmail.com',
-    nickname: 'johndoe',
-    description: 'My channel.',
-    image: 'http://static-cdn.jtvnw.net/jtv-static/404_preview-300x300.png',
+  "provider" => "twitch",
+  "uid" => "123456",
+  "info" => {
+    "name" => "piotrjaworskipaladin",
+    "email" => "piotr.jaworski@paladinsoftware.com",
+    "nickname" => "piotrjaworskipaladin",
+    "description" => "test desc",
+    "image" => "https://static-cdn.jtvnw.net/jtv_user_pictures/822e54cf-6bf2-4818-b36a-cbe787c3aa1e-profile_image-300x300.jpg",
+    "urls" => {
+      "twitch" => "http://www.twitch.tv/piotrjaworskipaladin"
+    }
   },
-  credentials: {
-    token: 'asdfghjklasdfghjklasdfghjkl', # OAuth 2.0 access_token, which you may wish to store
-    expires: false # this will always be false
+  "credentials" => {
+    "token" => "4eqw0ifdsif0iwef0isd",
+    "refresh_token" => "40ewfds09fds90fsd90f",
+    "expires_at" => 1517943718,
+    "expires" => true
   },
-  extra: {
-    raw_info: {
-      display_name: 'JohnDoe',
-      _id: 12345678,
-      name: 'johndoe',
-      type: 'user',
-      bio:"My channel.",
-      created_at:"2011-07-01T19:46:21Z",
-      updated_at:"2014-05-06T05:59:37Z",
-      logo:nil,
-      _links: { self: 'https://api.twitch.tv/kraken/users/johndoe'},
-      email:'johdoe@gmail.com',
-      partnered:false
+  "extra" =>  {
+    "raw_info" =>  {
+      "data" =>  [
+        {
+          "id" => "123456",
+          "login" => "piotrjaworskipaladin",
+          "display_name" => "piotrjaworskipaladin",
+          "type" => "",
+          "broadcaster_type" => "",
+          "description" => "test desc",
+          "profile_image_url" => "https://static-cdn.jtvnw.net/jtv_user_pictures/822e54cf-6bf2-4818-b36a-cbe787c3aa1e-profile_image-300x300.jpg",
+          "offline_image_url" => "",
+          "view_count" => 3,
+          "email" => "piotr.jaworski@paladinsoftware.com"
+        }
+      ]
     }
   }
 }
