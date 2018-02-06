@@ -3,7 +3,8 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Twitch < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = 'user:read:email'
+      DEFAULT_SCOPE = 'user:read:email'.freeze
+      DEFAULT_RESPONSE_TYPE = 'code'.freeze
 
       option :name, 'twitch'
 
@@ -64,6 +65,7 @@ module OmniAuth
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
           end
           params[:scope] = params[:scope] || DEFAULT_SCOPE
+          params[:response_type] = params[:response_type] || DEFAULT_RESPONSE_TYPE
         end
       end
     end
