@@ -3,14 +3,14 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Twitch < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = "user:read:email".freeze
-      DEFAULT_RESPONSE_TYPE = "code".freeze
+      SCOPE = 'user:read:email'.freeze
+      RESPONSE_TYPE = 'code'.freeze
 
       option :name, 'twitch'
 
       option :client_options, {
         site: 'https://api.twitch.tv',
-        authorize_url: "/kraken/oauth2/authorize",
+        authorize_url: '/kraken/oauth2/authorize',
         token_url: '/kraken/oauth2/token'
       }
 
@@ -19,7 +19,10 @@ module OmniAuth
         param_name: 'access_token'
       }
 
-      option :authorize_options, [:scope]
+      option :authorize_params, {
+        response_type: RESPONSE_TYPE,
+        scope: SCOPE
+      }
 
       uid{ raw_info['_id'] }
 
@@ -57,16 +60,6 @@ module OmniAuth
       def callback_url
         return options[:redirect_uri] unless options[:redirect_uri].nil?
         full_host + script_name + callback_path
-      end
-
-      def authorize_params
-        super.tap do |params|
-          options[:authorize_options].each do |k|
-            params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
-          end
-          params[:scope] = params[:scope] || DEFAULT_SCOPE
-          params[:response_type] = params[:response_type] || DEFAULT_RESPONSE_TYPE
-        end
       end
     end
   end
