@@ -3,9 +3,9 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Twitch < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = 'user_read'
+      DEFAULT_SCOPE = 'user:read:email'
 
-      option :name, "twitch"
+      option :name, 'twitch'
 
       option :client_options, {
         site: 'https://api.twitch.tv',
