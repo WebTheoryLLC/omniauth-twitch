@@ -1,1 +1,1 @@
-require "omniauth/twitch"
+require 'omniauth/twitch'
