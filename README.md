@@ -10,11 +10,7 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install omniauth-twitch
+    $ bundle install
 
 ## Usage
 
@@ -22,7 +18,7 @@ Here's an example for adding the middleware to a Rails app in `config/initialize
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"], scope: 'user:read:email'
+  provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"], scope: ENV["TWITCH_SCOPE"]
 end
 ```
 
