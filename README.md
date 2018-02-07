@@ -31,13 +31,13 @@ Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
   "provider" => "twitch",
   "uid" => "123456",
   "info" => {
-    "name" => "piotrjaworskipaladin",
-    "email" => "piotr.jaworski@paladinsoftware.com",
-    "nickname" => "piotrjaworskipaladin",
+    "name" => "piotrjaworski",
+    "email" => "piotrek.jaw@gmail.com",
+    "nickname" => "piotrjaworski",
     "description" => "test desc",
     "image" => "https://static-cdn.jtvnw.net/jtv_user_pictures/822e54cf-6bf2-4818-b36a-cbe787c3aa1e-profile_image-300x300.jpg",
     "urls" => {
-      "twitch" => "http://www.twitch.tv/piotrjaworskipaladin"
+      "twitch" => "http://www.twitch.tv/piotrjaworski"
     }
   },
   "credentials" => {
@@ -51,15 +51,15 @@ Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
       "data" =>  [
         {
           "id" => "123456",
-          "login" => "piotrjaworskipaladin",
-          "display_name" => "piotrjaworskipaladin",
+          "login" => "piotrjaworski",
+          "display_name" => "piotrjaworski",
           "type" => "",
           "broadcaster_type" => "",
           "description" => "test desc",
           "profile_image_url" => "https://static-cdn.jtvnw.net/jtv_user_pictures/822e54cf-6bf2-4818-b36a-cbe787c3aa1e-profile_image-300x300.jpg",
           "offline_image_url" => "",
           "view_count" => 3,
-          "email" => "piotr.jaworski@paladinsoftware.com"
+          "email" => "piotrek.jaw@gmail.com"
         }
       ]
     }
