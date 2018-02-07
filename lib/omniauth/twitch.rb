@@ -1,2 +1,2 @@
 require "omniauth/twitch/version"
-require 'omniauth/strategies/twitch'
+require "omniauth/strategies/twitch"
