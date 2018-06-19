@@ -8,9 +8,9 @@ module OmniAuth
       option :name, "twitch"
 
       option :client_options, {
-        site: 'https://api.twitch.tv',
-        authorize_url: "/kraken/oauth2/authorize",
-        token_url: '/kraken/oauth2/token'
+        site: 'https://id.twitch.tv',
+        authorize_url: "/oauth2/authorize",
+        token_url: '/oauth2/token'
       }
 
       option :access_token_options, {
@@ -21,7 +21,9 @@ module OmniAuth
       option :authorize_options, [:scope]
 
       uid{ raw_info['_id'] }
-
+      def request_phase
+        redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(authorize_params)).gsub(/%2[b,B]/,'+')
+      end
       info do
         {
           name: raw_info['display_name'],
