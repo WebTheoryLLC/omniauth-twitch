@@ -22,9 +22,9 @@ module OmniAuth
 
       def request_phase
         redirect client.auth_code.
-            authorize_url({ redirect_uri: callback_url }.
-            merge(authorize_params)).
-            gsub(/%2[b,B]/, "+")
+          authorize_url({ redirect_uri: callback_url }.
+          merge(authorize_params)).
+          gsub(/%2[b,B]/, "+")
       end
 
       credentials do
