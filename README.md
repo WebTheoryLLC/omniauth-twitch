@@ -2,7 +2,7 @@
 
 # OmniAuth::Twitch
 
-A OmniAuth strategy for Twitch
+A OmniAuth strategy for Twitch recently updated to helix api
 
 ## Installation
 
