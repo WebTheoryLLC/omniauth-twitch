@@ -3,33 +3,33 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Twitch < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = 'user_read'
+      DEFAULT_SCOPE = "user:read:email".freeze
 
       option :name, "twitch"
 
       option :client_options, {
-        site: 'https://api.twitch.tv',
-        authorize_url: "/kraken/oauth2/authorize",
-        token_url: '/kraken/oauth2/token'
+        site: "https://id.twitch.tv",
+        authorize_url: "/oauth2/authorize",
+        token_url: "/oauth2/token"
       }
 
       option :access_token_options, {
-        header_format: 'OAuth %s',
-        param_name: 'access_token'
+        header_format: "Bearer %s",
+        param_name: "access_token"
       }
 
       option :authorize_options, [:scope]
 
-      uid{ raw_info['_id'] }
+      uid { raw_info["id"] }
 
       info do
         {
-          name: raw_info['display_name'],
-          email: raw_info['email'],
-          nickname: raw_info['name'],
-          description: raw_info['bio'],
-          image: raw_info['logo'],
-          urls: { Twitch: "http://www.twitch.tv/#{raw_info['name']}" }
+          name: raw_info["display_name"],
+          email: raw_info["email"],
+          nickname: raw_info["login"],
+          description: raw_info["description"],
+          image: raw_info["profile_image_url"],
+          urls: { Twitch: "http://www.twitch.tv/#{raw_info['login']}" }
         }
       end
 
@@ -40,7 +40,9 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/kraken/user.json').parsed
+        @raw_info ||=
+          access_token.get("https://api.twitch.tv/helix/users").parsed.
+          fetch("data").fetch(0)
       end
 
       def build_access_token
