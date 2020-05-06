@@ -51,7 +51,8 @@ module OmniAuth
 
       def raw_info
         @raw_info ||=
-          access_token.get("https://api.twitch.tv/helix/users", headers: {"Client-ID" => client.id}).parsed.
+          access_token.get("https://api.twitch.tv/helix/users",
+            headers: { "Client-ID" => client.id }).parsed.
           fetch("data").fetch(0)
       end
 
