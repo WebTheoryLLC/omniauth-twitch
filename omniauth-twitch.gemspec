@@ -6,8 +6,8 @@ require 'omniauth/twitch/version'
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-twitch"
   spec.version       = OmniAuth::Twitch::VERSION
-  spec.authors       = ["Jonathan Gertig (Webtheory) and William Holt (Webtheory)"]
-  spec.email         = ["jcgertig@gmail.com or sithtoast@gmail.com"]
+  spec.authors       = ["Dean Perry", "Jonathan Gertig (Webtheory)", "William Holt (Webtheory)"]
+  spec.email         = ["dean@deanpcmad.com", "jcgertig@gmail.com", "sithtoast@gmail.com"]
   spec.summary       = 'Twitch OAuth2 Strategy for OmniAuth'
   spec.homepage      = "https://github.com/WebTheoryLLC/omniauth-twitch"
   spec.license       = "MIT"
