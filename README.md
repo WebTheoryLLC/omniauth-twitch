@@ -6,7 +6,7 @@ A OmniAuth strategy for Twitch
 
 ## Installation
 
-Add the OmniAuth Twitch and OmniAuth gem rails_csrf_protection gems to your Gemfile
+Add the OmniAuth Twitch and OmniAuth `rails_csrf_protection` gems to your Gemfile
 
 ```ruby
 gem 'omniauth-twitch'
